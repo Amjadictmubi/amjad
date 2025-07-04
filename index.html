@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMJAD Integrated Service</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #FF4500;
+      --text-light: #ccc;
+      --text-muted: #aaa;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background: #111;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+    }
+
+    .logo span {
+      color: var(--primary-color);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: var(--primary-color);
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background: #111;
+        padding: 10px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .hero,
+    .director {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      color: var(--primary-color);
+    }
+
+    .hero h2 {
+      font-size: 20px;
+      color: var(--text-light);
+    }
+
+    .hero h3 span {
+      color: var(--primary-color);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 10px auto;
+      line-height: 1.6;
+    }
+
+    .btn,
+    .whatsapp-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover,
+    .whatsapp-btn:hover {
+      background: #cc3700;
+    }
+
+    .whatsapp-btn i {
+      margin-right: 5px;
+    }
+
+    .director {
+      background: #111;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .director img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 0 10px var(--primary-color);
+      object-fit: cover;
+    }
+
+    .director h2 {
+      color: var(--primary-color);
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .director h3 {
+      margin: 10px 0;
+      color: var(--text-light);
+    }
+
+    .director p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .director .info {
+        max-width: 600px;
+        margin: auto;
+      }
+    }
+        .social {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social a {
+      color: var(--primary-color);
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="amjad.png" alt="AMJAD Logo">
+      <span>AMJAD</span>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav>
+      <ul id="menu">
+        <li><a href="index.html" class="active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="services.html"><i class="fas fa-laptop-code"></i> Services</a></li>
+        <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero">
+  <h2>Welcome to</h2>
+  <h1>AMJAD Integrated Service</h1>
+  <h3><span class="typing-effect"></span></h3>
+  <p>
+    <strong>At AMJAD Integrated Service</strong>, we are committed to 
+    <em>empowering students to excel in JAMB and other academic goals</em> through innovative, technology-driven learning and seamless exam registration  Our mission is to make exam preparation smarter, faster, and more effective—giving every student the confidence they need to succeed.
+  </p>
+  <p><strong> But we don’t stop there.</strong></p>
+  <p>
+   We also train IT students and offer beginner-to-advanced computer classes in a structured, professional, and exam-ready environment. Whether you're looking to build foundational digital skills or advance your career in tech, our expert-led programs are designed to meet you where you are and take you further.
+  </p>
+  <p><strong>Your success story begins here — let's build it together.</strong></p>
+  
+</section>
+
+
+  <!-- Director Section -->
+  <section class="director">
+    <h2>Meet the Director</h2>
+    <img src="director.jpg" alt="Director Image" />
+    <div class="info">
+      <h3>Mr. Mahmud Saleh</h3>
+      <p>
+        Director of AMJAD Integrated Service.<br>
+        Passionate about guiding students through digital transformation and educational success.
+      </p>
+      
+      <a href="https://wa.me/08101727027" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
+
+      <div class="social">
+      <a href="tel:08101727027" title="Call Director"><i class="fas fa-phone"></i></a>
+     <a href="mailto:amjadictmubi@gmail.com" title="Email Us"><i class="fas fa-envelope"></i></a>
+     <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // Typing effect
+    const roles = ["JAMB Registration", "IT Training Placement", "Computer Appreciations", "Networking Esentials","UX/UI Design", "Cybersecurity Fundermental", "WebDevelopment", "Software Development"];
+    let i = 0, j = 0, isDeleting = false;
+    const span = document.createElement("span");
+    document.querySelector(".typing-effect").appendChild(span);
+
+    function typeEffect() {
+      const current = roles[i];
+      if (!isDeleting) {
+        span.textContent = current.slice(0, ++j);
+        if (j === current.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+          return;
+        }
+      } else {
+        span.textContent = current.slice(0, --j);
+        if (j === 0) {
+          isDeleting = false;
+          i = (i + 1) % roles.length;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 60 : 90);
+    }
+
+    typeEffect();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.hero, .director');
+    function revealOnScroll() {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('reveal');
+        }
+      }
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    // Toggle mobile menu
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+
+</html>
